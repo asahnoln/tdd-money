@@ -1,13 +1,31 @@
 package currency
 
-type Dollar struct{
-	Amount int
+type Money struct{
+	amount int
+	name string
 }
 
-func NewDollar(amount int) Dollar {
-	return Dollar{amount}
+func NewDollar(amount int) Money {
+	return Money{
+		amount: amount,
+		name:   "dollar",
+	}
 }
 
-func (d Dollar) Times(multiplier int) Dollar {
-	return Dollar{d.Amount * multiplier}
+func NewFranc(amount int) Money {
+	return Money{
+		amount: amount,
+		name:   "franc",
+	}
+}
+
+func (d Money) Times(multiplier int) Money {
+	return Money{
+		amount: d.amount * multiplier,
+		name:   d.name,
+	}
+}
+
+func (d Money) Equals(money Money) bool {
+	return d.amount == money.amount && d.name == money.name
 }
