@@ -1,29 +1,29 @@
-package currency_test
+package money_test
 
 import (
 	"testing"
 
-	"example.com/currency"
+	"example.com/money"
 )
 
 func TestMultiplication(t *testing.T) {
-	five := currency.NewDollar(5);
-	assertEquals(t, currency.NewDollar(10), five.Times(2))
-	assertEquals(t, currency.NewDollar(15), five.Times(3))
+	five := money.NewDollar(5);
+	assertEquals(t, money.NewDollar(10), five.Times(2))
+	assertEquals(t, money.NewDollar(15), five.Times(3))
 }
 
 func TestFrancMultiplication(t *testing.T) {
-	five := currency.NewFranc(5);
-	assertEquals(t, currency.NewFranc(10), five.Times(2))
-	assertEquals(t, currency.NewFranc(15), five.Times(3))
+	five := money.NewFranc(5);
+	assertEquals(t, money.NewFranc(10), five.Times(2))
+	assertEquals(t, money.NewFranc(15), five.Times(3))
 }
 
 func TestEquality(t *testing.T) {
-	assertTrue(t, currency.NewDollar(5).Equals(currency.NewDollar(5)))
-	assertFalse(t, currency.NewDollar(5).Equals(currency.NewDollar(6)))
-	assertTrue(t, currency.NewFranc(5).Equals(currency.NewFranc(5)))
-	assertFalse(t, currency.NewFranc(5).Equals(currency.NewFranc(6)))
-	assertFalse(t, currency.NewFranc(5).Equals(currency.NewDollar(5)))
+	assertTrue(t, money.NewDollar(5).Equals(money.NewDollar(5)))
+	assertFalse(t, money.NewDollar(5).Equals(money.NewDollar(6)))
+	assertTrue(t, money.NewFranc(5).Equals(money.NewFranc(5)))
+	assertFalse(t, money.NewFranc(5).Equals(money.NewFranc(6)))
+	assertFalse(t, money.NewFranc(5).Equals(money.NewDollar(5)))
 }
 
 func assertTrue(t testing.TB, got bool) {
