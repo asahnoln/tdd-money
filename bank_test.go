@@ -3,7 +3,7 @@ package money_test
 import (
 	"testing"
 
-	"example.com/money"
+	"github.com/asahnoln/tdd-money"
 )
 
 func TestSimpleAddition(t *testing.T) {
