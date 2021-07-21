@@ -26,10 +26,18 @@ func (d Money) Times(multiplier int) Money {
 	}
 }
 
-func (d Money) Equals(money Money) bool {
-	return d.amount == money.amount && d.currency == money.currency
+func (d Money) Equals(m Money) bool {
+	return d.amount == m.amount && d.currency == m.currency
 }
 
 func (d Money) Currency() string {
 	return d.currency
+}
+
+func (d Money) Plus(m Money) Sum {
+	return Sum{d, m}
+}
+
+func (d Money) Reduce(to string) Money {
+	return d
 }

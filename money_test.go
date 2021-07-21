@@ -23,26 +23,15 @@ func TestCurrency(t *testing.T) {
 	assertEquals(t, "CHF", money.NewFranc(1).Currency())
 }
 
-func assertTrue(t testing.TB, got bool) {
-	t.Helper()
-	assertBool(t, true, got)
+func TestPlusReturnsSum(t *testing.T) {
+	five := money.NewDollar(5)
+	sum := five.Plus(five)
+	assertEquals(t, five, sum.Augend)
+	assertEquals(t, five, sum.Addend)
 }
 
-func assertFalse(t testing.TB, got bool) {
-	t.Helper()
-	assertBool(t, false, got)
-}
-
-func assertBool(t testing.TB, want, got bool) {
-	t.Helper()
-	if want != got {
-		t.Errorf("want bool %v, got %v", want, got)
-	}
-}
-
-func assertEquals(t testing.TB, want, got interface{}) {
-	t.Helper()
-	if want != got {
-		t.Errorf("want %v, got %v", want, got)
-	}
+func TestReduceMoney(t *testing.T) {
+	bank := money.Bank{}
+	got := bank.Reduce(money.NewDollar(1), "USD")
+	assertEquals(t, money.NewDollar(1), got)
 }
