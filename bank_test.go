@@ -6,11 +6,6 @@ import (
 	"github.com/asahnoln/tdd-money"
 )
 
-func TestSimpleAddition(t *testing.T) {
-	five := money.NewDollar(5)
-	sum := five.Plus(five)
-	bank := money.Bank{}
-	reduced := bank.Reduce(sum, "USD")
-
-	assertEquals(t, money.NewDollar(10), reduced)
+func TestIdentityRate(t *testing.T) {
+	assertEquals(t, 1, money.NewBank().Rate("USD", "USD"))
 }

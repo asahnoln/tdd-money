@@ -1,0 +1,14 @@
+#+TITLE: TDD by Example, in Go
+
+* What?
+This is a project, which implements first part of "Test-Driven Development by Example" by Kent Beck in Go.
+
+* //TODO
+- +$5 + 10 CHF = $10 if rate is 2:1+
+- +$5 + $5 = $10+
+- Return Money from $5 + $5
+- +Bank.reduce(Money)+
+- +Reduce Money with conversion+
+- +Reduce(Bank, String)+
+- Sum.plus
+- Expression.times?

@@ -31,7 +31,35 @@ func TestPlusReturnsSum(t *testing.T) {
 }
 
 func TestReduceMoney(t *testing.T) {
-	bank := money.Bank{}
+	bank := money.NewBank()
 	got := bank.Reduce(money.NewDollar(1), "USD")
 	assertEquals(t, money.NewDollar(1), got)
+}
+
+func TestSimpleAddition(t *testing.T) {
+	five := money.NewDollar(5)
+	sum := five.Plus(five)
+	bank := money.NewBank()
+	reduced := bank.Reduce(sum, "USD")
+
+	assertEquals(t, money.NewDollar(10), reduced)
+}
+
+func TestReduceMoneyDifferentCurrency(t *testing.T) {
+	bank := money.NewBank()
+	bank.AddRate("CHF", "USD", 2)
+	got := bank.Reduce(money.NewFranc(2), "USD")
+
+	assertEquals(t, money.NewDollar(1), got)
+}
+
+func TestMixedAddition(t *testing.T) {
+	fiveBucks := money.NewDollar(5)
+	tenFrancs := money.NewFranc(10)
+
+	bank := money.NewBank()
+	bank.AddRate("CHF", "USD", 2)
+	got := bank.Reduce(fiveBucks.Plus(tenFrancs), "USD")
+
+	assertEquals(t, money.NewDollar(10), got)
 }

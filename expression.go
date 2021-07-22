@@ -1,16 +1,16 @@
 package money
 
 type Expression interface {
-	Reduce(to string) Money
+	Reduce(b Bank, to string) Money
 }
 
 type Sum struct {
-	Augend, Addend Money
+	Augend, Addend Expression
 }
 
-func (s Sum) Reduce(to string) Money {
+func (s Sum) Reduce(b Bank, to string) Money {
 	return Money{
-		s.Augend.amount + s.Addend.amount,
+		s.Augend.Reduce(b, to).amount + s.Addend.Reduce(b, to).amount,
 		to,
 	}
 }

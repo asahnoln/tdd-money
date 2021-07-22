@@ -38,6 +38,10 @@ func (d Money) Plus(m Money) Sum {
 	return Sum{d, m}
 }
 
-func (d Money) Reduce(to string) Money {
-	return d
+func (d Money) Reduce(b Bank, to string) Money {
+	rate := b.Rate(d.currency, to)
+	return Money{
+		d.amount / rate,
+		to,
+	}
 }
